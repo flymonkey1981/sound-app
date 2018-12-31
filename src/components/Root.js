@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import Router from './Router'
+import NavContainer from "./NavContainer";
+
 
 const propTypes = {
     initAuth: PropTypes.func.isRequired,
@@ -18,6 +20,7 @@ class Root extends Component {
         const { router, routes } = this.props;
         return (
             <div>
+                <NavContainer/>
                 <Router router={router} routes={routes} />
             </div>
         );
