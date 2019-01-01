@@ -9,9 +9,9 @@ const propTypes = {
 
 class Nav extends Component {
     render(){
-        const {login, logout} = this.props;
+        const {isAuthenticated, login, logout} = this.props;
         return (
-          <NavUser login={login} logout={logout}>Nav</NavUser>
+          <NavUser isAuthenticated={isAuthenticated} login={login} logout={logout}>Nav</NavUser>
         );
     }
 }

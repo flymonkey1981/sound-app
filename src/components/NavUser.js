@@ -1,33 +1,44 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import * as SpotifyFunctions from "../utils/spotifyFunctions";
 import Nav from "./Nav";
 import Cookies from "js-cookie";
 import {COOKIE_PATH} from "../constants/ApiConstants";
 
 const propTypes = {
+    isAuthenticated: PropTypes.bool.isRequired,
     login: PropTypes.func.isRequired,
     logout: PropTypes.func.isRequired
 };
 
 class NavUser extends Component {
-    componentDidMount(){
+    componentDidMount() {
         //this.login();
         //will check URL for accessToken hash. If it's not there, it will show the connect-spotify-button as a link
         //which will then redirect back to your site with the hash. If there is a hash, then we will jump right into the player
         const accessToken = SpotifyFunctions.checkUrlForSpotifyAccessToken();
-        accessToken ? this.setState({loggedInToSpotify: true, accessToken: accessToken}) : this.setState({loggedInToSpotify: false, accessToken: null});
-        Cookies.set(COOKIE_PATH, accessToken);
+        //accessToken ? this.setState({loggedInToSpotify: true, accessToken: accessToken}) : this.setState({loggedInToSpotify: false, accessToken: null});
+        if (accessToken) {
+            Cookies.set(COOKIE_PATH, accessToken);
+        }
     }
+
     render() {
-        const {login, logout} = this.props;
-        return (
-            <div className="ConnectSpotify">
-                <a href={SpotifyFunctions.redirectUrlToSpotifyForLogin()}>
-                    <button>Login</button>
-                </a>
+        const {isAuthenticated, login, logout} = this.props;
+        console.log('access code '+Cookies.get(COOKIE_PATH));
+        if (isAuthenticated) {
+            return (
+                <div className="ConnectSpotify">
                     <button onClick={logout}>Logout</button>
-            </div>
+                    <button onClick={login}>Access</button>
+                </div>
+            );
+        }
+        return(
+            <a href={SpotifyFunctions.redirectUrlToSpotifyForLogin()}>
+                <button>Login</button>
+                <button onClick={login}>Access</button>
+            </a>
         );
     }
 }

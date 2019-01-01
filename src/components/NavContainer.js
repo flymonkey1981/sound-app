@@ -8,7 +8,7 @@ const NavContainer = (props) => <Nav {...props}/>
 
 const mapStateToProps = state => (
     {
-        isAuthenticated: 'true'
+        isAuthenticated: state.session.oauthToken ? true:false,
     }
 )
 

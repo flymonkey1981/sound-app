@@ -9,6 +9,8 @@ import * as types from '../constants/ActionsTypes'
 
 export const login = () => (dispatch)=> {
     console.log("login is called");
+    const oauthToken = Cookies.get(COOKIE_PATH);
+    dispatch({type:types.LOGIN_SUCCESS, oauthToken });
 
 
 }
@@ -20,6 +22,7 @@ export const initAuth = () =>  (dispatch) => {
 export const logout = () => (dispatch) => {
     console.log("logout is called");
     console.log("access code"+Cookies.get(COOKIE_PATH));
+    Cookies.remove(COOKIE_PATH)
     dispatch(navigateTo(INITIAL_ROUTE));
     dispatch({type:types.LOGOUT});
 }
