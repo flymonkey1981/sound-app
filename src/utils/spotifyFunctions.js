@@ -15,10 +15,6 @@ export function redirectUrlToSpotifyForLogin(){
       '&redirect_uri=' + encodeURIComponent(REDIRECT_URI) +
       '&scope=' + encodeURIComponent(scopes.join(' ')) +
       '&response_type=token';
-     // window.location.href = 'https://accounts.spotify.com/authorize?client_id=' + CLIENT_ID +
-     //     '&redirect_uri=' + encodeURIComponent(REDIRECT_URI) +
-     //     '&scope=' + encodeURIComponent(scopes.join(' ')) +
-     //     '&response_type=token';
 }
 
 export function checkUrlForSpotifyAccessToken(){
