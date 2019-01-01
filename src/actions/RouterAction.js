@@ -1,10 +1,14 @@
+/* global history */
+/* global location */
+/* global window */
+
 import {compileHash} from "../utils/RouterUtils";
 import {CHANGE_ROUTE} from "../constants/ActionsTypes";
 
 const pushState = (route)=> {
     const hash = compileHash(route);
-    if(location.hash!==hash) {
-        history.pushState({route},'',hash);
+    if(window.location.hash!==hash) {
+        window.history.pushState({route},'',hash);
     }
 };
 
