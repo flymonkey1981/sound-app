@@ -13,6 +13,7 @@ const propTypes = {
 
 class NavUser extends Component {
     componentDidMount() {
+        const {login} = this.props;
         //this.login();
         //will check URL for accessToken hash. If it's not there, it will show the connect-spotify-button as a link
         //which will then redirect back to your site with the hash. If there is a hash, then we will jump right into the player
@@ -20,6 +21,7 @@ class NavUser extends Component {
         //accessToken ? this.setState({loggedInToSpotify: true, accessToken: accessToken}) : this.setState({loggedInToSpotify: false, accessToken: null});
         if (accessToken) {
             Cookies.set(COOKIE_PATH, accessToken);
+            login();
         }
     }
 
@@ -29,15 +31,17 @@ class NavUser extends Component {
         if (isAuthenticated) {
             return (
                 <div className="ConnectSpotify">
+
                     <button onClick={logout}>Logout</button>
-                    <button onClick={login}>Access</button>
+                    <i className="nav-user__chevron ion-chevron-down" />
+
                 </div>
             );
         }
         return(
             <a href={SpotifyFunctions.redirectUrlToSpotifyForLogin()}>
                 <button>Login</button>
-                <button onClick={login}>Access</button>
+               
             </a>
         );
     }
