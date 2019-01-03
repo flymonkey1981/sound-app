@@ -13,16 +13,16 @@ const propTypes = {
 
 class NavUser extends Component {
     componentDidMount() {
-        const {login} = this.props;
+        //const {login} = this.props;
         //this.login();
         //will check URL for accessToken hash. If it's not there, it will show the connect-spotify-button as a link
         //which will then redirect back to your site with the hash. If there is a hash, then we will jump right into the player
-        const accessToken = SpotifyFunctions.checkUrlForSpotifyAccessToken();
+       // const accessToken = SpotifyFunctions.checkUrlForSpotifyAccessToken();
         //accessToken ? this.setState({loggedInToSpotify: true, accessToken: accessToken}) : this.setState({loggedInToSpotify: false, accessToken: null});
-        if (accessToken) {
-            Cookies.set(COOKIE_PATH, accessToken);
-            login();
-        }
+        //if (accessToken) {
+        //    Cookies.set(COOKIE_PATH, accessToken);
+       //     login();
+       // }
     }
 
     render() {
