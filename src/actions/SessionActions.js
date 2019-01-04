@@ -30,11 +30,41 @@ export const initAuth = () =>  (dispatch) => {
 }
 
 export const fetchSessionData = (oauthToken) => (dispatch) => {
-    dispatch(fetchSongs(oauthToken));
+    //dispatch(fecthPlayerList(oauthToken));
+    dispatch(fetchPlayerListSongs(oauthToken));
 }
 
-export const fetchSongs = (oauthToken) => (dispatch) => {
-    const request = new Request(`https://api.spotify.com/v1/me/playlists?limit=50`, {
+export const fecthPlayerList = (oauthToken) => (dispatch) => {
+    const request = new Request(`https://api.spotify.com/v1/me/playlists`, {
+        headers: new Headers({
+            'Authorization': 'Bearer ' + oauthToken
+        })
+    });
+
+    fetch(request).then(res => {
+        if(res.statusText === "Unauthorized") {
+            window.location.href = './';
+        }
+        return res.json();
+    }).then(res => {
+        console.log('res is'+ res.items);
+        uniqBy(res.items, (item) => {
+            return item.owner.id;
+        }).map(item => {
+            console.log('item track'+item.owner.display_name) ;
+        });
+
+
+
+    }).catch(err => {
+        //dispatch(fetchSongsError(err));
+    });
+
+
+}
+
+export const fetchPlayerListSongs = (oauthToken) => (dispatch) => {
+    const request = new Request(`https://api.spotify.com/v1/users/Spotify/playlists/37i9dQZF1DWYLUQ5WYaArq/tracks`, {
         headers: new Headers({
             'Authorization': 'Bearer ' + oauthToken
         })
@@ -48,11 +78,14 @@ export const fetchSongs = (oauthToken) => (dispatch) => {
     }).then(res => {
         // get all artist ids and remove duplicates
         console.log('res is'+ res.items);
-        let artistIds = uniqBy(res.items, (item) => {
-            return item.track.artists[0].name;
-        }).map(item => {
-            return item.track.artists[0].id;
-        }).join(',');
+       uniqBy(res.items, (item) => {
+           return item.track.id
+       });
+        // let artistIds = uniqBy(res.items, (item) => {
+        //     return item.track.artists[0].name;
+        // }).map(item => {
+        //     return item.track.artists[0].id;
+        // }).join(',');
 
 
     }).catch(err => {
@@ -68,3 +101,4 @@ export const logout = () => (dispatch) => {
     dispatch(navigateTo(INITIAL_ROUTE));
     dispatch({type:types.LOGOUT});
 }
+
