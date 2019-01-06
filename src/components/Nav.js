@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import NavUser from './NavUser'
+import '../styles/nav.scss'
 
 const propTypes = {
     login: PropTypes.func.isRequired,
@@ -8,10 +9,14 @@ const propTypes = {
 };
 
 class Nav extends Component {
-    render(){
+    render() {
         const {isAuthenticated, login, logout} = this.props;
         return (
-          <NavUser isAuthenticated={isAuthenticated} login={login} logout={logout}>Nav</NavUser>
+            <div className="nav">
+                <div className="nav__inner container">
+                <NavUser isAuthenticated={isAuthenticated} login={login} logout={logout}>Nav</NavUser>
+                </div>
+            </div>
         );
     }
 }

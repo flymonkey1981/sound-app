@@ -1,0 +1,11 @@
+@import './variable.scss';
+.nav {
+  height: 50px;
+  background-color: $darkerGray;
+};
+
+.nav__inner {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
