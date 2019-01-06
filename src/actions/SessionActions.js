@@ -78,9 +78,10 @@ export const fetchPlayerListSongs = (oauthToken) => (dispatch) => {
     }).then(res => {
         // get all artist ids and remove duplicates
         console.log('res is'+ res.items);
-       uniqBy(res.items, (item) => {
+       let items = uniqBy(res.items, (item) => {
            return item.track.id
        });
+       dispatch({type:types.FETCH_SONGS_SUCCESS, items})
         // let artistIds = uniqBy(res.items, (item) => {
         //     return item.track.artists[0].name;
         // }).map(item => {
