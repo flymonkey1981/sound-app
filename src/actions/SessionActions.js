@@ -18,15 +18,15 @@ export const login = () => (dispatch)=> {
 
 export const initAuth = () =>  (dispatch) => {
     console.log("initAuth is called");
-    const oauthToken = SpotifyFunctions.checkUrlForSpotifyAccessToken();
-    if(!oauthToken){
-        console.log("oauthToken is null");
-        window.location.href = SpotifyFunctions.redirectUrlToSpotifyForLogin();
-    }else{
-        Cookies.set(COOKIE_PATH, oauthToken);
-        dispatch({type:types.LOGIN_SUCCESS, oauthToken });
-        dispatch(fetchSessionData(oauthToken));
-    }
+    // const oauthToken = SpotifyFunctions.checkUrlForSpotifyAccessToken();
+    // if(!oauthToken){
+    //     console.log("oauthToken is null");
+    //     window.location.href = SpotifyFunctions.redirectUrlToSpotifyForLogin();
+    // }else{
+    //     Cookies.set(COOKIE_PATH, oauthToken);
+    //     dispatch({type:types.LOGIN_SUCCESS, oauthToken });
+    //     dispatch(fetchSessionData(oauthToken));
+    // }
 }
 
 export const fetchSessionData = (oauthToken) => (dispatch) => {

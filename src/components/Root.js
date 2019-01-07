@@ -20,7 +20,7 @@ class Root extends Component {
         const { router, routes } = this.props;
         return (
             <div>
-                <NavContainer/>
+                {/*<NavContainer/>*/}
                 <Router router={router} routes={routes} />
             </div>
         );
