@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import SongsContainer from './SongsContainer';
+import SongContainer from './SongsContainer';
 import LoginContainer from './LoginContainer';
 import { initAuth} from '../actions/SessionActions';
 import {
@@ -23,7 +23,7 @@ const mapStateToProps = (state) => {
         router,
         routes: {
             [INDEX_PATH]: LoginContainer,
-            [SONGS_PATH]: SongsContainer,
+            [SONGS_PATH]: SongContainer,
             [LOGIN_PATH]: LoginContainer,
 
         }

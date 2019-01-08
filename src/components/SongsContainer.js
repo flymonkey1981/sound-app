@@ -7,9 +7,10 @@ import Song from './Song'
 const SongContainer = props => <Song {...props} />;
 
 const mapStateToProps = (state) => {
-    const { player, playlist } = state;
+    const { player, playlist, login } = state;
 
     return {
+        user: login.user,
         playlist: playlist,
         song: '123',
     };

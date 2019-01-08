@@ -4,12 +4,13 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
     playSong: PropTypes.func.isRequired,
+    user: PropTypes.object,
 }
 
 class Song extends Component {
 
     render() {
-        const {playlist, playSong} = this.props;
+        const {playlist, playSong, user} = this.props;
         console.log('Song length is '+ playlist.items.length);
 
         const renderSongs =  playlist.items.map(
@@ -25,7 +26,12 @@ class Song extends Component {
         );
 
         return (
-            <div>{renderSongs}</div>
+            <div>
+                {user.username}|{user.age}|{user.postCode}
+                {renderSongs}
+
+            </div>
+
         );
     }
 }
