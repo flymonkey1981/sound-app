@@ -10,7 +10,7 @@ const LoginContainer = (props) => <Login {...props}/>
 
 const mapStateToProps = state => (
     {
-        isLogin: false,
+        isLogin: state.login.isLogin,
     }
 )
 

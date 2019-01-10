@@ -9,9 +9,11 @@ import {
     SONG_PATH,
     SONGS_PATH,
     USER_PATH,
-    LOGIN_PATH
+    LOGIN_PATH,
+    PRODUCTLIST_PATH
 } from '../constants/RouterConstants';
 import Root from './Root'
+import ProductListContainer from "./ProductListContainer";
 
 const RootContainer = props => <Root {...props}/>;
 
@@ -19,12 +21,13 @@ const RootContainer = props => <Root {...props}/>;
 const mapStateToProps = (state) => {
     const {router} = state;
     return {
-        paths: [INDEX_PATH, SONGS_PATH, LOGIN_PATH],
+        paths: [INDEX_PATH, SONGS_PATH, LOGIN_PATH, PRODUCTLIST_PATH],
         router,
         routes: {
             [INDEX_PATH]: LoginContainer,
             [SONGS_PATH]: SongContainer,
             [LOGIN_PATH]: LoginContainer,
+            [PRODUCTLIST_PATH]: ProductListContainer,
 
         }
     }

@@ -10,7 +10,15 @@ const login = (state = initialState, action) => {
         case types.LOGIN_SUCCESS:
             return {
                 ...state,
-                user: action.user
+                user: action.user,
+                isLogin:true,
+
+            };
+        case types.LOGIN_SUCCESS:
+            return {
+                ...state,
+                user: {},
+                isLogin:false,
 
             };
         default:

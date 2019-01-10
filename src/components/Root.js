@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
-import Router from './Router'
-
+import React, {Component} from 'react';
+//import Router from './Router'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import LoginContainer from './LoginContainer'
+import ProductListContainer from "./ProductListContainer";
 
 
 const propTypes = {
@@ -11,18 +13,23 @@ const propTypes = {
 
 class Root extends Component {
     componentWillMount() {
-        const { initAuth} = this.props;
+        const {initAuth} = this.props;
         initAuth();
 
     }
 
     render() {
-        const { router, routes } = this.props;
+        //const { router, routes } = this.props;
         return (
-            <div>
-                {/*<NavContainer/>*/}
-                <Router router={router} routes={routes} />
-            </div>
+
+            <Router>
+                <Switch>
+                    <Route exact path="/" component={LoginContainer}/>
+                    <Route path="/login" component={LoginContainer}/>
+                    <Route path="/products" component={ProductListContainer}/>
+                </Switch>
+            </Router>
+
         );
     }
 }
