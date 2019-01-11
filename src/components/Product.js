@@ -3,10 +3,12 @@ import React, {Component} from 'react';
 
 import {Redirect} from 'react-router-dom';
 import axios from 'axios'
+import '../styles/product.scss'
 
 const propTypes = {
     isLogin: PropTypes.bool.isRequired,
-    logout: PropTypes.func.isRequired
+    logout: PropTypes.func.isRequired,
+    addProduct: PropTypes.func.isRequired,
 };
 
 class Product extends Component {
@@ -28,16 +30,28 @@ class Product extends Component {
             })
     }
     render() {
-        const {history, isLogin, logout} = this.props;
+        const {history, isLogin, logout, addProduct} = this.props;
 
         if(isLogin){
+            var shoppingCart = JSON.parse(window.localStorage.getItem("shoppingCart"));
             return(
                 <div>
                     Product
                     <button onClick={()=>{console.log('hello');logout(history)}}>Logout</button>
-                    <ul>{ this.state.products.map(product =>
-                        <li>{product.name}|{product.detail}</li>)}
-                        </ul>
+                    <div>ShoppingCart: {shoppingCart.length}</div>
+                    <section className="products">
+                    { this.state.products.map(product =>
+                        <div key = {product.name} className="product-card">
+                            <div className="product-image"><img src={product.image}/></div>
+                            <div className="product-info">
+                                <h5>{product.name}</h5>
+                                <h6>{product.price}</h6>
+                                <button onClick={()=>{addProduct(product)}}>Add</button>
+                            </div>
+
+                        </div>)}
+                    </section>
+
                 </div>
             );
         }else{

@@ -3,7 +3,7 @@
   "detail": "Lorem ipsum dolor sit amet",
   "price": "99",
   "hero": "OMG This just came out today!",
-  "image": "http://placehold.it/940x300/999/CCC"
+  "image": "http://placehold.it/300x300/999/CCC"
 },{
   "name": "Product 1",
   "detail": "Lorem ipsum dolor sit amet",
@@ -34,6 +34,20 @@
   "image": "http://placehold.it/300x300/999/CCC"
 },{
   "name": "Product 6",
+  "detail": "Lorem ipsum dolor sit amet",
+  "price": "99",
+  "info": "This is the latest and greatest product from Derp corp.",
+  "offer": "info with offer",
+  "image": "http://placehold.it/300x300/999/CCC"
+},{
+    "name": "Product 7",
+    "detail": "Lorem ipsum dolor sit amet",
+    "price": "99",
+    "info": "This is the latest and greatest product from Derp corp.",
+    "offer": "info with offer",
+    "image": "http://placehold.it/300x300/999/CCC"
+},{
+  "name": "Product 8",
   "detail": "Lorem ipsum dolor sit amet",
   "price": "99",
   "info": "This is the latest and greatest product from Derp corp.",
