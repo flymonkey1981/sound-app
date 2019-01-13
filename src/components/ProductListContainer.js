@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Product from "./Product";
 import {logout} from "../actions/LoginAction";
-import {addProduct, viewProduct} from "../actions/ProductAction";
+import {addProduct, viewProduct, viewShoppingCart} from "../actions/ProductAction";
 
 const ProductContainer = (props) => <Product {...props}/>
 
@@ -16,6 +16,7 @@ const mapStateToProps = state => (
 export default connect(mapStateToProps, {
         logout,
         addProduct,
-    viewProduct
+    viewProduct,
+    viewShoppingCart
     }
 )(ProductContainer);

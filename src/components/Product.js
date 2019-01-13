@@ -30,7 +30,7 @@ class Product extends Component {
             })
     }
     render() {
-        const {history, isLogin, logout, addProduct, shoppingCart, viewProduct} = this.props;
+        const {history, isLogin, logout, addProduct, shoppingCart, viewProduct, viewShoppingCart} = this.props;
 
         if(isLogin){
             //var shoppingCart = JSON.parse(window.localStorage.getItem("shoppingCart"));
@@ -38,7 +38,7 @@ class Product extends Component {
                 <div>
                     Product
                     <button onClick={()=>{console.log('hello');logout(history)}}>Logout</button>
-                    <div>ShoppingCart: {shoppingCart.length}</div>
+                    <div><li onClick={()=>{viewShoppingCart(shoppingCart, history)}}>ShoppingCart: {shoppingCart.length}</li></div>
                     <section className="products">
                     { this.state.products.map(product =>
                         <div key = {product.name} className="product-card">

@@ -22,4 +22,15 @@ export const viewProduct = (currentProduct, history) => (dispatch) => {
     history.push('/productDetail');
 
 
+};
+
+export const viewShoppingCart = (shoppingCart, history) => (dispatch) => {
+    dispatch({type: types.VIEW_SHOPPINGCART, shoppingCart});
+    history.push('/shoppingCart');
+
+
+};
+
+export const removeProduct = (product) => (dispatch) => {
+    dispatch({type: types.REMOVE_PRODUCT, product});
 }

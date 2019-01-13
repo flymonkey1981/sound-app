@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import LoginContainer from './LoginContainer'
 import ProductListContainer from "./ProductListContainer";
 import ProductDetailContainer from "./ProductDetailContainer";
+import ShoppingCartContainer from './ShoppingCartContainer';
 
 
 const propTypes = {
@@ -29,6 +30,7 @@ class Root extends Component {
                     <Route path="/login" component={LoginContainer}/>
                     <Route path="/products" component={ProductListContainer}/>
                     <Route path="/productDetail" component={ProductDetailContainer}/>
+                    <Route path="/shoppingCart" component={ShoppingCartContainer}/>
                 </Switch>
             </Router>
 
