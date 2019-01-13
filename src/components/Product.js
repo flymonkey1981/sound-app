@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 
-import {Redirect} from 'react-router-dom';
+import {Redirect,Link} from 'react-router-dom';
 import axios from 'axios'
 import '../styles/product.scss'
 
@@ -30,10 +30,10 @@ class Product extends Component {
             })
     }
     render() {
-        const {history, isLogin, logout, addProduct} = this.props;
+        const {history, isLogin, logout, addProduct, shoppingCart, viewProduct} = this.props;
 
         if(isLogin){
-            var shoppingCart = JSON.parse(window.localStorage.getItem("shoppingCart"));
+            //var shoppingCart = JSON.parse(window.localStorage.getItem("shoppingCart"));
             return(
                 <div>
                     Product
@@ -42,7 +42,10 @@ class Product extends Component {
                     <section className="products">
                     { this.state.products.map(product =>
                         <div key = {product.name} className="product-card">
-                            <div className="product-image"><img src={product.image}/></div>
+                            <div className="product-image">
+                                <input type="image" src={product.image}
+                                       onClick={()=>{viewProduct(product, history)}}/>
+                            </div>
                             <div className="product-info">
                                 <h5>{product.name}</h5>
                                 <h6>{product.price}</h6>

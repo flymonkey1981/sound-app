@@ -15,4 +15,11 @@ export const addProduct = (product) => (dispatch) => {
     console.log("Shopping cart is "+JSON.parse(window.localStorage.getItem("shoppingCart")).length);
 
     dispatch({type: types.ADD_PRODUCT, product});
+};
+
+export const viewProduct = (currentProduct, history) => (dispatch) => {
+    dispatch({type: types.VIEW_PRODUCT, currentProduct});
+    history.push('/productDetail');
+
+
 }

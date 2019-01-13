@@ -1,16 +1,23 @@
 import * as types from '../constants/ActionsTypes';
 const initialState = {
     product: {},
-    shoppingCart: []
+    shoppingCart: [],
+    currentProduct: {}
 }
 
 const product = (state = initialState, action) => {
     switch(action.type){
-        case types.ADD_PRODUCT:
+        case types.ADD_PRODUCT: {
+            state.shoppingCart.push(product);
             return {
                 ...state,
                 product: action.product,
-                shoppingCart: state.shoppingCart.push(product)
+            }
+        }
+        case types.VIEW_PRODUCT :
+            return {
+                ...state,
+                currentProduct: action.currentProduct,
             }
         default:
             return state;
