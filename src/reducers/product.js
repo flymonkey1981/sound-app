@@ -31,6 +31,26 @@ const product = (state = initialState, action) => {
 
             }
          }
+        case types.CHECKOUT : {
+            return {
+                ...state,
+
+            }
+        }
+        case types.UPDATE_QTY : {
+            let qant = action.qant;
+            state.shoppingCart = Object.assign([], state.shoppingCart.map(product => {
+                    if (product.name === qant.name) {
+                        product.qty = Number(product.qty)+ Number(qant.qty);
+                    }
+                    return product;
+                }
+            ));
+            return {
+                ...state,
+
+            }
+        }
         default:
             return state;
     }

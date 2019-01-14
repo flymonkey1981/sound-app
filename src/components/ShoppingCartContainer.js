@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import ShoppingCart from "./ShoppingCart";
-import {viewProduct, removeProduct} from "../actions/ProductAction";
+import {viewProduct, removeProduct, checkout, updateQty} from "../actions/ProductAction";
 
 
 const ShoppingCartContainer = (props) => <ShoppingCart {...props}/>
@@ -14,6 +14,8 @@ const mapStateToProps = state => (
 
 export default connect(mapStateToProps, {
     viewProduct,
-    removeProduct
+    removeProduct,
+    checkout,
+    updateQty
     }
 )(ShoppingCartContainer);

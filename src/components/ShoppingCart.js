@@ -6,13 +6,14 @@ import '../styles/shoppingCart.scss';
 const propTypes = {
     shoppingCart: PropTypes.array.isRequired,
     viewProduct: PropTypes.func.isRequired,
-    removeProduct: PropTypes.func.isRequired
+    removeProduct: PropTypes.func.isRequired,
+    updateQty: PropTypes.func.isRequired,
 
 };
 
 class ShoppingCart extends Component {
     render() {
-        const {shoppingCart, viewProduct, removeProduct, history} = this.props;
+        const {shoppingCart, viewProduct, removeProduct, checkout, updateQty, history} = this.props;
         return (
             <section className="shopping-cart">
                 {shoppingCart.map(product =>
@@ -26,12 +27,18 @@ class ShoppingCart extends Component {
                         <div className="product-info">
                             <h5>{product.name}</h5>
                             <h6>{product.price}</h6>
-                            <h6> qty: <input type="text" name="qty" defaultValue="1"/></h6>
+                            <h6> Qty: <input type="text" name="qty" defaultValue="1" onChange={
+                                (event)=>{
+                                    console.log(event.target.value+product.name);
+                                    updateQty(event.target.value, product);
+                                }
+                            }/></h6>
                             <div className="remove" onClick={()=>{removeProduct(product)}}>Remove</div>
-
                         </div>
 
                     </div>)}
+                    <button onClick={()=>{ checkout(shoppingCart, history)}}>Checkout</button>
+
             </section>
         )
     }

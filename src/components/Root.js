@@ -6,7 +6,7 @@ import LoginContainer from './LoginContainer'
 import ProductListContainer from "./ProductListContainer";
 import ProductDetailContainer from "./ProductDetailContainer";
 import ShoppingCartContainer from './ShoppingCartContainer';
-
+import SummaryContainer from './SummaryContainer';
 
 const propTypes = {
     initAuth: PropTypes.func.isRequired,
@@ -31,6 +31,7 @@ class Root extends Component {
                     <Route path="/products" component={ProductListContainer}/>
                     <Route path="/productDetail" component={ProductDetailContainer}/>
                     <Route path="/shoppingCart" component={ShoppingCartContainer}/>
+                    <Route path="/summary" component={SummaryContainer}/>
                 </Switch>
             </Router>
 

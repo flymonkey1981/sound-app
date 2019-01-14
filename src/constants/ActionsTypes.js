@@ -31,3 +31,5 @@ export const ADD_PRODUCT = "ADD_PRODUCT";
 export const VIEW_PRODUCT = "VIEW_PRODUCT";
 export const VIEW_SHOPPINGCART = "VIEW_SHOPPINGCART";
 export const REMOVE_PRODUCT = "REMOVE_PRODUCT";
+export const CHECKOUT = "CHECKOUT";
+export const UPDATE_QTY = "UPDATE_QTY";

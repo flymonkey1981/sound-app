@@ -34,3 +34,13 @@ export const viewShoppingCart = (shoppingCart, history) => (dispatch) => {
 export const removeProduct = (product) => (dispatch) => {
     dispatch({type: types.REMOVE_PRODUCT, product});
 }
+
+export const checkout = (shoppingCart, history) => (dispatch) => {
+    dispatch({type: types.CHECKOUT, shoppingCart});
+    history.push('/summary');
+}
+
+export const updateQty = (qty, product) => (dispatch) => {
+    var qant = {qty: qty, name: product.name};
+    dispatch({type: types.UPDATE_QTY, qant});
+}
